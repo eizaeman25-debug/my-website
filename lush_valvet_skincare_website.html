@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lush Valvet | Love Your Skin</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            purple: '#581c87',
+                            deepPurple: '#3b0764',
+                            lightPurple: '#a855f7',
+                            softPink: '#f472b6',
+                            rosePink: '#e11d48',
+                            blush: '#fdf2f8',
+                            pastelPink: '#fbcfe8',
+                            darkText: '#1e1b4b'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        cursive: ['Great Vibes', 'cursive']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400..800;1,400..800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #581c87 0%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at top right, rgba(244, 114, 182, 0.25), transparent 50%),
+                        radial-gradient(circle at bottom left, rgba(88, 28, 135, 0.15), transparent 50%),
+                        #fff5f8;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(244, 114, 182, 0.2);
+        }
+        .shimmer {
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite;
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .badge-glow {
+            box-shadow: 0 0 15px rgba(236, 72, 153, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-[#fcf8fa] text-brand-darkText font-sans antialiased selection:bg-brand-softPink selection:text-white flex flex-col min-h-screen">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-gradient-to-r from-brand-purple via-brand-softPink to-brand-purple text-white text-xs md:text-sm py-2 px-4 text-center font-medium shadow-sm">
+        <p class="flex items-center justify-center gap-2">
+            <span>Fast WhatsApp Ordering Available</span>
+            <i class="fa-solid fa-heart text-pink-200"></i>
+        </p>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-brand-pastelPink/50 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Brand Logo matching prompt image style -->
+            <a href="https://chatgpt.com/s/m_6a946ffdf55c8191839b9f7fbede1097" class="flex items-center gap-3 group">
+                <div class="relative w-12 h-12 rounded-full bg-gradient-to-br from-brand-purple to-brand-softPink p-0.5 flex items-center justify-center shadow-md transition-transform group-hover:scale-105">
+                    <div class>
+                        <svg viewBox="0 0 100 100" class="w-9 h-9">
+                            <path d="M35 85 C35 70, 45 60, 52 50 C58 42, 58 35, 52 28 C48 24, 42 25, 40 30 C38 33, 34 33, 32 30 C28 22, 38 10, 52 10 C68 10, 75 22, 70 36 C67 44, 58 52, 54 62 C50 72, 45 80, 45 85 Z" fill="#581c87" />
+                            <path d="M22 25 C20 18, 12 18, 16 28 C20 28, 25 32, 22 25 Z" fill="#ec4899" />
+                            <path d="M28 15 C30 8, 38 12, 32 20 C28 20, 25 18, 28 15 Z" fill="#a855f7" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-serif text-2xl md:text-3xl font-bold tracking-tight text-brand-purple leading-tight" style="font-family: 'Playfair Display', serif;">
+                        Lush Valvet
+                    </span>
+                    <span class="text-[10px] uppercase tracking-[0.25em] text-brand-softPink font-bold">
+                        Love Your Skin
+                    </span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-gray-700">
+                <a href="#hero" class="hover:text-brand-purple transition-colors">Home</a>
+                <a href="#products" class="hover:text-brand-purple transition-colors">The Collection</a>
+                <a href="#about" class="hover:text-brand-purple transition-colors">Why Lush Valvet</a>
+                <a href="#reviews" class="hover:text-brand-purple transition-colors">Reviews</a>
+                <a href="#instagram" class="hover:text-brand-purple transition-colors flex items-center gap-1">
+                    <i class="fa-brands fa-instagram text-pink-600"></i> @lushvalvet
+                </a>
+            </nav>
+
+            <!-- Actions (Instagram, WhatsApp, Cart) -->
+            <div class="flex items-center gap-3 sm:gap-4">
+                <!-- Instagram Quick Link -->
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" 
+                   title="Visit Instagram"
+                   class="hidden sm:flex w-10 h-10 rounded-full bg-pink-50 text-pink-600 items-center justify-center hover:bg-pink-100 transition-colors">
+                    <i class="fa-brands fa-instagram text-lg"></i>
+                </a>
+
+                <!-- WhatsApp Quick Order -->
+                <a href="https://wa.me/?text=Hi%20Lush%20Valvet!%20I'd%20like%20to%20order%20your%20skincare%20products." 
+                   target="_blank" rel="noopener noreferrer"
+                   title="Chat on WhatsApp"
+                   class="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white px-3.5 py-2 rounded-full text-xs font-semibold shadow-sm transition-transform active:scale-95">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span class="hidden sm:inline">WhatsApp Order</span>
+                </a>
+
+                <!-- Cart Button -->
+                <button onclick="toggleCartModal()" class="relative p-2 text-brand-purple hover:bg-brand-blush rounded-full transition-colors">
+                    <i class="fa-solid fa-bag-shopping text-xl"></i>
+                    <span id="cart-count-badge" class="absolute -top-1 -right-1 bg-brand-softPink text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white">
+                        0
+                    </span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-gradient relative overflow-hidden py-12 lg:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Hero Copy -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 border border-brand-pastelPink text-brand-purple text-xs font-semibold shadow-xs">
+                        <i class="fa-solid fa-sparkles text-brand-softPink"></i>
+                        <span>Luxury Botanical Skincare</span>
+                    </div>
+
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-deepPurple leading-[1.15]">
+                        Reveal Your Skin's Natural <span class="gradient-text italic font-normal">Velvet Glow</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-gray-600 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                        Formulated with deep plant nutrients, botanical ceramides, and pure rose essence to transform dull skin into silky, hydrated perfection. Pure luxury for everyday radiance.
+                    </p>
+
+                    <!-- Features bullets -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2 text-left text-xs font-medium text-gray-700 max-w-md mx-auto lg:mx-0">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-circle-check text-brand-softPink"></i> 100% Organic Extracts
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-circle-check text-brand-softPink"></i> Cruelty-Free & Vegan
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-circle-check text-brand-softPink"></i> Dermatologist Tested
+                        </div>
+                    </div>
+
+                    <!-- Call to action buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start">
+                        <a href="#products" class="bg-gradient-to-r from-brand-purple to-brand-softPink text-white px-8 py-3.5 rounded-full font-semibold shadow-lg shadow-pink-500/20 hover:opacity-95 transition-all text-center">
+                            Explore 2-Step Routine
+                        </a>
+                        <a href="https://wa.me/?text=Hi%20Lush%20Valvet,%20I'm%20interested%20in%20learning%20more%20about%20your%20skincare%20line!" 
+                           target="_blank"
+                           class="bg-white border-2 border-emerald-500 text-emerald-700 hover:bg-emerald-50 px-6 py-3.5 rounded-full font-semibold transition-all flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-emerald-600 text-lg"></i>
+                            Order via WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Hero Image Visual -->
+                <div class="lg:col-span-5 relative flex justify-center">
+                    <div class="relative w-full max-w-md aspect-square rounded-3xl bg-gradient-to-br from-brand-pastelPink/40 via-purple-100 to-pink-200 p-6 flex flex-col items-center justify-center shadow-2xl border border-white">
+                        
+                        <!-- Floating Glassmorphism Badge -->
+                        <div class="absolute -top-4 -left-4 glass-card px-4 py-2.5 rounded-2xl flex items-center gap-3 shadow-lg z-10">
+                            <div class="w-10 h-10 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center font-bold">
+                                4.9★
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-gray-800">5,000+ Happy Skin</p>
+                                <p class="text-[10px] text-gray-500">Verified Customer Reviews</p>
+                            </div>
+                        </div>
+
+                        <!-- Brand Logo Badge Graphic Inside Hero -->
+                        <div class="w-48 h-48 sm:w-56 sm:h-56 rounded-full bg-white/90 p-4 shadow-inner flex flex-col items-center justify-center text-center relative border border-brand-pastelPink">
+                            <svg viewBox="0 0 100 100" class="w-20 h-20 mb-2">
+                                <path d="M35 85 C35 70, 45 60, 52 50 C58 42, 58 35, 52 28 C48 24, 42 25, 40 30 C38 33, 34 33, 32 30 C28 22, 38 10, 52 10 C68 10, 75 22, 70 36 C67 44, 58 52, 54 62 C50 72, 45 80, 45 85 Z" fill="#581c87" />
+                                <path d="M22 25 C20 18, 12 18, 16 28 C20 28, 25 32, 22 25 Z" fill="#ec4899" />
+                                <path d="M28 15 C30 8, 38 12, 32 20 C28 20, 25 18, 28 15 Z" fill="#a855f7" />
+                            </svg>
+                            <span class="font-serif text-xl font-bold text-brand-purple">Lush Valvet</span>
+                            <span class="text-[9px] uppercase tracking-widest text-brand-softPink font-bold">Love Your Skin</span>
+                        </div>
+
+                        <!-- Hero Duo Preview Text -->
+                        <div class="mt-6 text-center">
+                            <span class="bg-brand-purple text-white text-xs px-3 py-1 rounded-full font-medium">
+                                The Signature Duo Collection
+                            </span>
+                        </div>
+
+                        <!-- Floating Discount Tag -->
+                        <div class="absolute -bottom-4 -right-4 bg-gradient-to-r from-brand-rosePink to-brand-softPink text-white px-4 py-2 rounded-2xl shadow-xl text-xs font-bold flex items-center gap-2">
+                            <i class="fa-solid fa-gift"></i> Save 15% on Duo Set
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Showcase Section (The 2 Core Products) -->
+    <section id="products" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs uppercase tracking-widest text-brand-softPink font-bold">Simple & Effective</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-deepPurple mt-1">
+                    The 2-Step Skincare Secret
+                </h2>
+                <div class="w-16 h-1 bg-gradient-to-r from-brand-purple to-brand-softPink mx-auto mt-3 rounded-full"></div>
+                <p class="text-gray-600 mt-3 text-sm sm:text-base">
+                    We believe skincare should be straightforward and potent. Formulated specifically to brighten, deeply nourish, and lock in moisture all day long.
+                </p>
+            </div>
+
+            <!-- Products Grid (2 Products) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
+
+                <!-- PRODUCT 1 CARD -->
+                <div class="bg-gradient-to-b from-purple-50/50 to-pink-50/30 rounded-3xl border border-brand-pastelPink/60 p-6 sm:p-8 flex flex-col justify-between hover:shadow-xl transition-all duration-300 relative group">
+                    <div class="absolute top-6 right-6 bg-brand-purple text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-xs">
+                        Step 01
+                    </div>
+                    
+                    <div>
+                        <!-- Product Mockup Graphic -->
+                        <div class="relative w-full aspect-square rounded-2xl bg-white border border-pink-100 flex items-center justify-center overflow-hidden mb-6 group-hover:scale-[1.02] transition-transform">
+                            <!-- SVG Serum Bottle Graphic -->
+                            <div class="flex flex-col items-center">
+                                <div class="w-8 h-10 bg-amber-200/80 rounded-t-md border border-amber-300 flex items-center justify-center">
+                                    <div class="w-3 h-3 rounded-full bg-amber-400"></div>
+                                </div>
+                                <div class="w-24 h-40 bg-gradient-to-b from-purple-100 via-pink-100 to-purple-200 rounded-2xl border-2 border-brand-pastelPink shadow-md p-3 flex flex-col justify-between text-center relative">
+                                    <div class="text-[9px] font-bold text-brand-purple mt-2">LUSH VALVET</div>
+                                    <div class="my-auto">
+                                        <i class="fa-solid fa-droplet text-pink-500 text-xl"></i>
+                                        <div class="text-[8px] font-bold text-gray-700 mt-1">GLOW SERUM</div>
+                                    </div>
+                                    <div class="text-[7px] text-gray-500">30ml / 1.0 fl.oz</div>
+                                </div>
+                            </div>
+                            <span class="absolute bottom-3 left-3 bg-white/90 text-brand-purple text-[10px] font-semibold px-2.5 py-1 rounded-lg border border-purple-100">
+                                Vitamin C & Rose Extract
+                            </span>
+                        </div>
+
+                        <!-- Product info -->
+                        <div class="flex items-center gap-1 text-amber-400 text-sm mb-2">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <span class="text-xs text-gray-500 font-medium ml-1">(128 Reviews)</span>
+                        </div>
+
+                        <h3 class="font-serif text-2xl font-bold text-brand-deepPurple">
+                            Velvet Radiance Glow Serum
+                        </h3>
+                        <p class="text-sm text-gray-600 mt-2 leading-relaxed">
+                            An ultra-concentrated elixir infused with Hyaluronic Acid, Vitamin C, and Bulgarian Rose Water. Penetrates deeply to brighten dark spots and restore youthful glow.
+                        </p>
+
+                        <div class="mt-4 flex flex-wrap gap-2 text-[11px] font-medium text-brand-purple">
+                            <span class="bg-pink-100/70 px-2.5 py-1 rounded-md">Hydrating</span>
+                            <span class="bg-purple-100/70 px-2.5 py-1 rounded-md">Brightening</span>
+                            <span class="bg-pink-100/70 px-2.5 py-1 rounded-md">Anti-Aging</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-purple-100/80 flex items-center justify-between">
+                        <div>
+                            <span class="text-2xl font-bold text-brand-deepPurple">$38.00</span>
+                            <span class="text-xs text-gray-400 line-through ml-1">$45.00</span>
+                        </div>
+
+                        <div class="flex gap-2">
+                            <button onclick="addToCart(1, 'Velvet Radiance Glow Serum', 38)" 
+                                    class="bg-brand-purple hover:bg-brand-deepPurple text-white px-5 py-2.5 rounded-full text-xs font-semibold shadow-md transition-transform active:scale-95 flex items-center gap-1.5">
+                                <i class="fa-solid fa-bag-shopping"></i>
+                                Add to Cart
+                            </button>
+                            <a href="https://wa.me/?text=Hi!%20I'd%20like%20to%20order%20the%20Velvet%20Radiance%20Glow%20Serum%20($38)" 
+                               target="_blank"
+                               title="Quick Buy on WhatsApp"
+                               class="bg-emerald-500 hover:bg-emerald-600 text-white w-10 h-10 rounded-full flex items-center justify-center transition-transform active:scale-95 shadow-md">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRODUCT 2 CARD -->
+                <div class="bg-gradient-to-b from-pink-50/50 to-purple-50/30 rounded-3xl border border-brand-pastelPink/60 p-6 sm:p-8 flex flex-col justify-between hover:shadow-xl transition-all duration-300 relative group">
+                    <div class="absolute top-6 right-6 bg-brand-softPink text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-xs">
+                        Step 02
+                    </div>
+
+                    <div>
+                        <!-- Product Mockup Graphic -->
+                        <div class="relative w-full aspect-square rounded-2xl bg-white border border-pink-100 flex items-center justify-center overflow-hidden mb-6 group-hover:scale-[1.02] transition-transform">
+                            <!-- SVG Cream Jar Graphic -->
+                            <div class="flex flex-col items-center">
+                                <div class="w-32 h-8 bg-gradient-to-r from-brand-purple to-brand-softPink rounded-t-xl border border-purple-300 flex items-center justify-center">
+                                    <span class="text-[8px] text-white font-bold tracking-widest">LUSH VALVET</span>
+                                </div>
+                                <div class="w-36 h-28 bg-gradient-to-b from-purple-50 via-pink-100 to-purple-100 rounded-b-3xl border-2 border-brand-pastelPink shadow-md p-3 flex flex-col justify-between text-center relative">
+                                    <div class="my-auto">
+                                        <i class="fa-solid fa-sparkles text-purple-600 text-xl"></i>
+                                        <div class="text-[9px] font-bold text-brand-purple mt-1">SILK MOISTURIZER</div>
+                                    </div>
+                                    <div class="text-[7px] text-gray-500">50ml / 1.7 oz</div>
+                                </div>
+                            </div>
+                            <span class="absolute bottom-3 left-3 bg-white/90 text-brand-purple text-[10px] font-semibold px-2.5 py-1 rounded-lg border border-purple-100">
+                                Botanical Ceramides & Peptides
+                            </span>
+                        </div>
+
+                        <!-- Product info -->
+                        <div class="flex items-center gap-1 text-amber-400 text-sm mb-2">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <span class="text-xs text-gray-500 font-medium ml-1">(154 Reviews)</span>
+                        </div>
+
+                        <h3 class="font-serif text-2xl font-bold text-brand-deepPurple">
+                            Lush Silk Repair Moisturizer
+                        </h3>
+                        <p class="text-sm text-gray-600 mt-2 leading-relaxed">
+                            A velvety rich cream that seals in hydrators, strengthens skin barrier, and leaves skin touchably soft without oily residue. Perfect for day and night.
+                        </p>
+
+                        <div class="mt-4 flex flex-wrap gap-2 text-[11px] font-medium text-brand-purple">
+                            <span class="bg-pink-100/70 px-2.5 py-1 rounded-md">Deep Moisture</span>
+                            <span class="bg-purple-100/70 px-2.5 py-1 rounded-md">Barrier Repair</span>
+                            <span class="bg-pink-100/70 px-2.5 py-1 rounded-md">Smooth Finish</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-purple-100/80 flex items-center justify-between">
+                        <div>
+                            <span class="text-2xl font-bold text-brand-deepPurple">$44.00</span>
+                            <span class="text-xs text-gray-400 line-through ml-1">$50.00</span>
+                        </div>
+
+                        <div class="flex gap-2">
+                            <button onclick="addToCart(2, 'Lush Silk Repair Moisturizer', 44)" 
+                                    class="bg-brand-purple hover:bg-brand-deepPurple text-white px-5 py-2.5 rounded-full text-xs font-semibold shadow-md transition-transform active:scale-95 flex items-center gap-1.5">
+                                <i class="fa-solid fa-bag-shopping"></i>
+                                Add to Cart
+                            </button>
+                            <a href="https://wa.me/?text=Hi!%20I'd%20like%20to%20order%20the%20Lush%20Silk%20Repair%20Moisturizer%20($44)" 
+                               target="_blank"
+                               title="Quick Buy on WhatsApp"
+                               class="bg-emerald-500 hover:bg-emerald-600 text-white w-10 h-10 rounded-full flex items-center justify-center transition-transform active:scale-95 shadow-md">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Duo Bundle Banner -->
+            <div class="mt-12 max-w-5xl mx-auto bg-gradient-to-r from-brand-purple via-pink-600 to-brand-softPink rounded-3xl p-6 sm:p-8 text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl relative overflow-hidden">
+                <div class="space-y-2 text-center sm:text-left z-10">
+                    <span class="bg-white/20 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                        Best Value Duo
+                    </span>
+                    <h3 class="font-serif text-2xl sm:text-3xl font-bold">The Complete Lush Glow Set</h3>
+                    <p class="text-xs sm:text-sm text-pink-100 max-w-md">
+                        Get both the Glow Serum + Silk Moisturizer and receive an extra 15% discount + Free Shipping!
+                    </p>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row items-center gap-3 z-10">
+                    <div class="text-center sm:text-right">
+                        <span class="text-2xl font-bold">$69.00</span>
+                        <span class="text-xs line-through text-pink-200 block">$82.00</span>
+                    </div>
+                    <button onclick="addBundleToCart()" class="bg-white text-brand-purple hover:bg-pink-50 px-6 py-3 rounded-full text-xs font-bold shadow-md transition-transform active:scale-95">
+                        Add Bundle To Cart
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Why Lush Valvet / About Section -->
+    <section id="about" class="py-20 bg-brand-blush/60 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Graphic Illustration -->
+                <div class="relative flex justify-center">
+                    <div class="relative w-full max-w-lg aspect-4/3 rounded-3xl overflow-hidden bg-white p-8 shadow-xl border border-brand-pastelPink flex flex-col items-center justify-center text-center">
+                        
+                        <!-- Logo Overlay Background -->
+                        <div class="w-32 h-32 rounded-full bg-pink-50 flex items-center justify-center mb-4 border border-pink-200">
+                            <svg viewBox="0 0 100 100" class="w-16 h-16">
+                                <path d="M35 85 C35 70, 45 60, 52 50 C58 42, 58 35, 52 28 C48 24, 42 25, 40 30 C38 33, 34 33, 32 30 C28 22, 38 10, 52 10 C68 10, 75 22, 70 36 C67 44, 58 52, 54 62 C50 72, 45 80, 45 85 Z" fill="#581c87" />
+                                <path d="M22 25 C20 18, 12 18, 16 28 C20 28, 25 32, 22 25 Z" fill="#ec4899" />
+                                <path d="M28 15 C30 8, 38 12, 32 20 C28 20, 25 18, 28 15 Z" fill="#a855f7" />
+                            </svg>
+                        </div>
+
+                        <h4 class="font-serif text-2xl font-bold text-brand-purple">Love Your Skin Every Single Day</h4>
+                        <p class="text-xs text-gray-500 mt-2 max-w-sm">
+                            Created with botanical love, free from parabens, sulfates, and harsh synthetic dyes. Designed to respect your skin's delicate natural moisture balance.
+                        </p>
+
+                        <div class="mt-6 flex items-center justify-center gap-6 text-brand-purple font-semibold text-xs">
+                            <div class="flex items-center gap-1.5"><i class="fa-solid fa-leaf text-pink-500"></i> Pure Botanicals</div>
+                            <div class="flex items-center gap-1.5"><i class="fa-solid fa-flask text-pink-500"></i> Lab Verified</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Content -->
+                <div class="space-y-6">
+                    <span class="text-xs uppercase tracking-widest text-brand-softPink font-bold">The Lush Valvet Difference</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-deepPurple leading-tight">
+                        Crafted for Silkiness, Formulated for Real Results
+                    </h2>
+                    <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
+                        At <strong class="text-brand-purple">Lush Valvet</strong>, our philosophy is simple: skincare shouldn't require 10 complicated steps. With our two staple formulations, you give your skin everything it needs for barrier repair, deep hydration, and natural illumination.
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 rounded-2xl bg-purple-100 text-brand-purple flex items-center justify-center shrink-0 font-bold">
+                                01
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 text-sm">Deep Layer Penetration</h4>
+                                <p class="text-xs text-gray-500 mt-0.5">Micro-encapsulated active ingredients absorb rapidly into skin without feeling sticky.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 rounded-2xl bg-pink-100 text-brand-softPink flex items-center justify-center shrink-0 font-bold">
+                                02
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 text-sm">Velvet Shield Technology</h4>
+                                <p class="text-xs text-gray-500 mt-0.5">Locks in humidity and essential hydration for up to 24 hours.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 rounded-2xl bg-purple-100 text-brand-purple flex items-center justify-center shrink-0 font-bold">
+                                03
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 text-sm">Gentle & Non-Comedogenic</h4>
+                                <p class="text-xs text-gray-500 mt-0.5">Designed to work seamlessly on dry, sensitive, or combination skin types.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Instagram Grid Section -->
+    <section id="instagram" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="flex flex-col sm:flex-row items-center justify-between mb-12 gap-4">
+                <div>
+                    <span class="text-xs uppercase tracking-widest text-brand-softPink font-bold">Community & Glow Stories</span>
+                    <h2 class="font-serif text-3xl font-bold text-brand-deepPurple mt-1">
+                        Follow Us On Instagram
+                    </h2>
+                </div>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" 
+                   class="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white px-5 py-2.5 rounded-full text-xs font-semibold shadow-md hover:opacity-95 transition-opacity">
+                    <i class="fa-brands fa-instagram text-base"></i>
+                    Follow @lushvalvet
+                </a>
+            </div>
+
+            <!-- Instagram Grid Mockup -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                
+                <!-- Post 1 -->
+                <a href="https://instagram.com" target="_blank" class="group relative aspect-square rounded-2xl bg-gradient-to-tr from-purple-100 to-pink-100 overflow-hidden border border-pink-100 p-4 flex flex-col items-center justify-center text-center">
+                    <i class="fa-brands fa-instagram text-2xl text-pink-500 mb-2 group-hover:scale-110 transition-transform"></i>
+                    <span class="text-xs font-serif font-bold text-brand-purple">#LushGlowRoutine</span>
+                    <p class="text-[10px] text-gray-500 mt-1">"The serum literally transformed my skin tone in 2 weeks! ✨"</p>
+                    <div class="absolute inset-0 bg-brand-purple/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-bold">
+                        View Post
+                    </div>
+                </a>
+
+                <!-- Post 2 -->
+                <a href="https://instagram.com" target="_blank" class="group relative aspect-square rounded-2xl bg-gradient-to-tr from-pink-100 to-purple-100 overflow-hidden border border-pink-100 p-4 flex flex-col items-center justify-center text-center">
+                    <i class="fa-brands fa-instagram text-2xl text-pink-500 mb-2 group-hover:scale-110 transition-transform"></i>
+                    <span class="text-xs font-serif font-bold text-brand-purple">#VelvetSkin</span>
+                    <p class="text-[10px] text-gray-500 mt-1">"Morning routine staple. Non-greasy moisturization 🌸"</p>
+                    <div class="absolute inset-0 bg-brand-purple/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-bold">
+                        View Post
+                    </div>
+                </a>
+
+                <!-- Post 3 -->
+                <a href="https://instagram.com" target="_blank" class="group relative aspect-square rounded-2xl bg-gradient-to-tr from-purple-100 to-pink-100 overflow-hidden border border-pink-100 p-4 flex flex-col items-center justify-center text-center">
+                    <i class="fa-brands fa-instagram text-2xl text-pink-500 mb-2 group-hover:scale-110 transition-transform"></i>
+                    <span class="text-xs font-serif font-bold text-brand-purple">#LoveYourSkin</span>
+                    <p class="text-[10px] text-gray-500 mt-1">"Unboxing my new Lush Valvet skincare order 🛍️💖"</p>
+                    <div class="absolute inset-0 bg-brand-purple/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-bold">
+                        View Post
+                    </div>
+                </a>
+
+                <!-- Post 4 -->
+                <a href="https://instagram.com" target="_blank" class="group relative aspect-square rounded-2xl bg-gradient-to-tr from-pink-100 to-purple-100 overflow-hidden border border-pink-100 p-4 flex flex-col items-center justify-center text-center">
+                    <i class="fa-brands fa-instagram text-2xl text-pink-500 mb-2 group-hover:scale-110 transition-transform"></i>
+                    <span class="text-xs font-serif font-bold text-brand-purple">#OrganicSkincare</span>
+                    <p class="text-[10px] text-gray-500 mt-1">"Clean botanical ingredients that actually work 🌿"</p>
+                    <div class="absolute inset-0 bg-brand-purple/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-bold">
+                        View Post
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews Section -->
+    <section id="reviews" class="py-20 bg-gradient-to-b from-brand-blush/40 to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-xl mx-auto mb-16">
+                <span class="text-xs uppercase tracking-widest text-brand-softPink font-bold">Real Results</span>
+                <h2 class="font-serif text-3xl font-bold text-brand-deepPurple mt-1">Loved By Skincare Lovers</h2>
+                <div class="flex items-center justify-center gap-1 text-amber-400 mt-2">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <span class="text-xs text-gray-600 font-medium ml-1">4.9/5 Average Rating</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Review 1 -->
+                <div class="bg-white p-6 rounded-3xl border border-pink-100 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 text-xs gap-1 mb-3">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-xs text-gray-600 leading-relaxed italic">
+                            "The Velvet Radiance Serum gave my skin an instant glassy bounce. I've replaced my entire multi-step routine with just these two products!"
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs">
+                        <div>
+                            <span class="font-bold text-gray-800 block">Sophia M.</span>
+                            <span class="text-[10px] text-emerald-600 flex items-center gap-1">
+                                <i class="fa-solid fa-circle-check"></i> Verified Buyer
+                            </span>
+                        </div>
+                        <span class="text-[10px] text-gray-400">2 days ago</span>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-white p-6 rounded-3xl border border-pink-100 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 text-xs gap-1 mb-3">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-xs text-gray-600 leading-relaxed italic">
+                            "Ordering via WhatsApp was so effortless! The package arrived beautifully wrapped. The cream feels like pure silk on my face."
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs">
+                        <div>
+                            <span class="font-bold text-gray-800 block">Aria K.</span>
+                            <span class="text-[10px] text-emerald-600 flex items-center gap-1">
+                                <i class="fa-solid fa-circle-check"></i> Verified Buyer
+                            </span>
+                        </div>
+                        <span class="text-[10px] text-gray-400">1 week ago</span>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-white p-6 rounded-3xl border border-pink-100 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 text-xs gap-1 mb-3">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-xs text-gray-600 leading-relaxed italic">
+                            "My skin is super sensitive, but Lush Valvet caused zero irritation. Highly recommend buying the duo set!"
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs">
+                        <div>
+                            <span class="font-bold text-gray-800 block">Elena R.</span>
+                            <span class="text-[10px] text-emerald-600 flex items-center gap-1">
+                                <i class="fa-solid fa-circle-check"></i> Verified Buyer
+                            </span>
+                        </div>
+                        <span class="text-[10px] text-gray-400">2 weeks ago</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Shopping Cart Slide-over Drawer -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden pointer-events-none transition-opacity duration-300 opacity-0">
+        <!-- Backdrop -->
+        <div id="cart-backdrop" onclick="toggleCartModal()" class="absolute inset-0 bg-black/40 backdrop-blur-xs transition-opacity"></div>
+
+        <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col pointer-events-auto">
+                
+                <!-- Drawer Header -->
+                <div class="p-6 border-b border-pink-100 flex items-center justify-between bg-brand-blush/50">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-bag-shopping text-brand-purple text-lg"></i>
+                        <h3 class="font-serif text-lg font-bold text-brand-deepPurple">Your Lush Cart</h3>
+                    </div>
+                    <button onclick="toggleCartModal()" class="p-2 text-gray-400 hover:text-gray-600">
+                        <i class="fa-solid fa-xmark text-lg"></i>
+                    </button>
+                </div>
+
+                <!-- Drawer Body (Items list) -->
+                <div id="cart-items-container" class="flex-1 overflow-y-auto p-6 space-y-4">
+                    <!-- Dynamic cart items rendered via JS -->
+                    <div class="text-center py-12 text-gray-400">
+                        <i class="fa-solid fa-basket-shopping text-4xl text-pink-200 mb-3"></i>
+                        <p class="text-sm">Your cart is empty.</p>
+                        <a href="#products" onclick="toggleCartModal()" class="inline-block mt-3 text-xs font-semibold text-brand-purple underline">
+                            Shop The Collection
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Drawer Footer -->
+                <div class="p-6 border-t border-pink-100 bg-gray-50/50 space-y-4">
+                    <div class="space-y-2 text-xs">
+                        <div class="flex justify-between text-gray-600">
+                            <span>Subtotal</span>
+                            <span id="cart-subtotal font-semibold">$0.00</span>
+                        </div>
+                        <div class="flex justify-between text-gray-600">
+                            <span>Shipping</span>
+                            <span class="text-emerald-600 font-semibold">Calculated at checkout</span>
+                        </div>
+                        <div class="flex justify-between text-sm font-bold text-brand-deepPurple pt-2 border-t">
+                            <span>Total</span>
+                            <span id="cart-total">$0.00</span>
+                        </div>
+                    </div>
+
+                    <!-- Direct Checkout Options -->
+                    <div class="space-y-2 pt-2">
+                        <!-- Primary WhatsApp Order Button -->
+                        <button onclick="checkoutWhatsApp()" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white py-3 rounded-full text-xs font-bold flex items-center justify-center gap-2 shadow-md transition-transform active:scale-95">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            Checkout via WhatsApp
+                        </button>
+                        
+                        <!-- Standard Web Order simulation -->
+                        <button onclick="showDirectCheckoutModal()" class="w-full bg-brand-purple hover:bg-brand-deepPurple text-white py-3 rounded-full text-xs font-bold flex items-center justify-center gap-2 shadow-md transition-transform active:scale-95">
+                            <i class="fa-solid fa-credit-card"></i>
+                            Direct Order Form
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Direct Checkout Form Modal -->
+    <div id="checkout-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs hidden">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-pink-100 relative">
+            <button onclick="closeCheckoutModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <h3 class="font-serif text-xl font-bold text-brand-deepPurple mb-1">Complete Your Order</h3>
+            <p class="text-xs text-gray-500 mb-6">Enter details below to place your Lush Valvet order.</p>
+
+            <form onsubmit="handleFormSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">Full Name</label>
+                    <input type="text" required placeholder="e.g. Sarah Jenkins" class="w-full px-3.5 py-2.5 rounded-xl border border-pink-200 text-xs focus:ring-2 focus:ring-brand-purple focus:outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">Phone / WhatsApp Number</label>
+                    <input type="tel" required placeholder="+1 234 567 8900" class="w-full px-3.5 py-2.5 rounded-xl border border-pink-200 text-xs focus:ring-2 focus:ring-brand-purple focus:outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">Delivery Address</label>
+                    <textarea required rows="2" placeholder="Street address, City, Country" class="w-full px-3.5 py-2.5 rounded-xl border border-pink-200 text-xs focus:ring-2 focus:ring-brand-purple focus:outline-none"></textarea>
+                </div>
+
+                <div class="pt-2">
+                    <button type="submit" class="w-full bg-gradient-to-r from-brand-purple to-brand-softPink text-white py-3 rounded-full text-xs font-bold shadow-md hover:opacity-95 transition-opacity">
+                        Place Order Now
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Order Toast Notification -->
+    <div id="toast-notification" class="fixed bottom-6 right-6 z-50 bg-brand-deepPurple text-white px-5 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3 transition-all duration-300 translate-y-20 opacity-0 pointer-events-none">
+        <div class="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center shrink-0">
+            <i class="fa-solid fa-check"></i>
+        </div>
+        <div>
+            <p id="toast-title" class="text-xs font-bold">Added to Cart!</p>
+            <p id="toast-msg" class="text-[11px] text-pink-200">Product is in your shopping bag.</p>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/?text=Hi%20Lush%20Valvet!%20I'd%20like%20to%20inquire%20about%20your%20skincare%20products." 
+       target="_blank" 
+       rel="noopener noreferrer"
+       title="Direct WhatsApp Support"
+       class="fixed bottom-6 left-6 z-40 bg-emerald-500 hover:bg-emerald-600 text-white p-3.5 rounded-full shadow-2xl flex items-center justify-center transition-transform hover:scale-110 badge-glow">
+        <i class="fa-brands fa-whatsapp text-2xl"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer class="bg-brand-deepPurple text-white pt-16 pb-8 border-t border-purple-900 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                
+                <!-- Brand Info -->
+                <div class="space-y-4 md:col-span-1">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center">
+                            <svg viewBox="0 0 100 100" class="w-6 h-6">
+                                <path d="M35 85 C35 70, 45 60, 52 50 C58 42, 58 35, 52 28 C48 24, 42 25, 40 30 C38 33, 34 33, 32 30 C28 22, 38 10, 52 10 C68 10, 75 22, 70 36 C67 44, 58 52, 54 62 C50 72, 45 80, 45 85 Z" fill="#581c87" />
+                                <path d="M22 25 C20 18, 12 18, 16 28 C20 28, 25 32, 22 25 Z" fill="#ec4899" />
+                            </svg>
+                        </div>
+                        <span class="font-serif text-xl font-bold">Lush Valvet</span>
+                    </div>
+                    <p class="text-xs text-pink-200/80 leading-relaxed">
+                        Love Your Skin. Luxury botanical formulas created to empower your natural glow every single day.
+                    </p>
+                    <div class="flex items-center gap-3 pt-2">
+                        <a href="https://instagram.com" target="_blank" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-xs transition-colors">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://wa.me/" target="_blank" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-xs transition-colors">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-xs transition-colors">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-brand-softPink mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-xs text-pink-100/80">
+                        <li><a href="#hero" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#products" class="hover:text-white transition-colors">The 2-Step Collection</a></li>
+                        <li><a href="#about" class="hover:text-white transition-colors">Why Lush Valvet</a></li>
+                        <li><a href="#reviews" class="hover:text-white transition-colors">Customer Reviews</a></li>
+                    </ul>
+                </div>
+
+                <!-- Customer Care -->
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-brand-softPink mb-4">Support & Order</h4>
+                    <ul class="space-y-2 text-xs text-pink-100/80">
+                        <li><a href="https://wa.me/" target="_blank" class="hover:text-white transition-colors">WhatsApp Concierge</a></li>
+                        <li><a href="https://instagram.com" target="_blank" class="hover:text-white transition-colors">Instagram DM Support</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Shipping & Returns</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">FAQs</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-brand-softPink mb-4">Stay Glowing</h4>
+                    <p class="text-xs text-pink-100/80 mb-3">Subscribe to receive exclusive discounts & skincare tips.</p>
+                    <div class="flex gap-2">
+                        <input type="email" placeholder="Your email..." class="bg-white/10 border border-purple-800 rounded-full px-3.5 py-2 text-xs text-white placeholder-pink-200/50 focus:outline-none w-full">
+                        <button onclick="showToast('Subscribed!', 'Thank you for joining our glowing list.')" class="bg-brand-softPink hover:bg-pink-600 text-white px-4 py-2 rounded-full text-xs font-bold transition-colors">
+                            Join
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Copyright -->
+            <div class="pt-8 border-t border-purple-900/60 text-center text-[11px] text-pink-200/60 flex flex-col sm:flex-row justify-between items-center gap-3">
+                <p>© 2026 Lush Valvet. All rights reserved. Love Your Skin.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:underline">Privacy Policy</a>
+                    <a href="#" class="hover:underline">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Shopping Cart State
+        let cart = [];
+
+        // Toggle Drawer
+        function toggleCartModal() {
+            const drawer = document.getElementById('cart-drawer');
+            const isHidden = drawer.classList.contains('opacity-0');
+
+            if (isHidden) {
+                drawer.classList.remove('opacity-0', 'pointer-events-none');
+            } else {
+                drawer.classList.add('opacity-0', 'pointer-events-none');
+            }
+        }
+
+        // Add Product to Cart
+        function addToCart(id, name, price) {
+            const existingIndex = cart.findIndex(item => item.id === id);
+            if (existingIndex > -1) {
+                cart[existingIndex].quantity += 1;
+            } else {
+                cart.push({ id, name, price, quantity: 1 });
+            }
+            updateCartUI();
+            showToast('Added to Bag!', `${name} was added.`);
+        }
+
+        // Add Both Products (Duo Bundle)
+        function addBundleToCart() {
+            addToCart(1, 'Velvet Radiance Glow Serum', 38);
+            addToCart(2, 'Lush Silk Repair Moisturizer', 44);
+            showToast('Bundle Added!', 'The Lush Glow Duo is now in your bag with 15% off savings.');
+        }
+
+        // Change item quantity
+        function updateQuantity(id, change) {
+            const item = cart.find(i => i.id === id);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    cart = cart.filter(i => i.id !== id);
+                }
+            }
+            updateCartUI();
+        }
+
+        // Render Cart UI
+        function updateCartUI() {
+            const container = document.getElementById('cart-items-container');
+            const badge = document.getElementById('cart-count-badge');
+            const subtotalEl = document.getElementById('cart-subtotal');
+            const totalEl = document.getElementById('cart-total');
+
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+            badge.textContent = totalItems;
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 text-gray-400">
+                        <i class="fa-solid fa-basket-shopping text-4xl text-pink-200 mb-3"></i>
+                        <p class="text-sm">Your cart is empty.</p>
+                        <a href="#products" onclick="toggleCartModal()" class="inline-block mt-3 text-xs font-semibold text-brand-purple underline">
+                            Shop The Collection
+                        </a>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = cart.map(item => `
+                    <div class="flex items-center justify-between p-3 rounded-2xl bg-pink-50/50 border border-pink-100">
+                        <div>
+                            <p class="text-xs font-bold text-brand-deepPurple">${item.name}</p>
+                            <p class="text-[11px] text-gray-500">$${item.price.toFixed(2)} each</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button onclick="updateQuantity(${item.id}, -1)" class="w-6 h-6 rounded-full bg-white border border-gray-200 flex items-center justify-center text-xs font-bold hover:bg-gray-100">-</button>
+                            <span class="text-xs font-bold w-4 text-center">${item.quantity}</span>
+                            <button onclick="updateQuantity(${item.id}, 1)" class="w-6 h-6 rounded-full bg-white border border-gray-200 flex items-center justify-center text-xs font-bold hover:bg-gray-100">+</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            subtotalEl.textContent = `$${totalPrice.toFixed(2)}`;
+            totalEl.textContent = `$${totalPrice.toFixed(2)}`;
+        }
+
+        // WhatsApp Checkout
+        function checkoutWhatsApp() {
+            if (cart.length === 0) {
+                showToast('Cart Empty', 'Please add products to your cart before checking out.');
+                return;
+            }
+
+            let message = "Hi Lush Valvet! I would like to place an order:\n\n";
+            cart.forEach(item => {
+                message += `• ${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}\n`;
+            });
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            message += `\nTotal: $${total.toFixed(2)}\n\nPlease let me know how to proceed with delivery!`;
+
+            const encoded = encodeURIComponent(message);
+            window.open(`https://wa.me/?text=${encoded}`, '_blank');
+        }
+
+        // Modal triggers
+        function showDirectCheckoutModal() {
+            if (cart.length === 0) {
+                showToast('Cart Empty', 'Please add products first.');
+                return;
+            }
+            toggleCartModal();
+            document.getElementById('checkout-modal').classList.remove('hidden');
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById('checkout-modal').classList.add('hidden');
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            closeCheckoutModal();
+            cart = [];
+            updateCartUI();
+            showToast('Order Received!', 'Thank you! We will contact you on WhatsApp to confirm delivery.');
+        }
+
+        // Toast Feedback System
+        function showToast(title, message) {
+            const toast = document.getElementById('toast-notification');
+            document.getElementById('toast-title').textContent = title;
+            document.getElementById('toast-msg').textContent = message;
+
+            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+            }, 3500);
+        }
+    </script>
+</body>
+</html>
