@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ApexDev — Web Development, Marketing & Creative Growth Agency</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-0:#050810;
+    --bg-1:#070c19;
+    --bg-2:#0b1424;
+    --navy-deep:#0a1220;
+    --blue-electric:#4f9bff;
+    --blue-soft:#7fb4ff;
+    --blue-dim:#1f3a63;
+    --ink-0:#f4f7fc;
+    --ink-1:#c4cee3;
+    --ink-2:#8a97b3;
+    --line-0:rgba(255,255,255,0.08);
+    --line-1:rgba(255,255,255,0.14);
+    --glass:rgba(255,255,255,0.035);
+    --glass-hi:rgba(255,255,255,0.07);
+    --glow:0 0 60px rgba(79,155,255,0.18);
+    --radius:18px;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *,*::before,*::after{box-sizing:inherit;}
+  html{scroll-behavior:smooth;scroll-padding-top:88px;-webkit-text-size-adjust:100%;}
+  html,body{height:100%;}
+  body{
+    margin:0;
+    background:var(--bg-0);
+    color:var(--ink-0);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+  h1,h2,h3,h4{
+    font-family:'Space Grotesk',sans-serif;
+    color:var(--ink-0);
+    margin:0;
+    letter-spacing:-0.01em;
+    font-weight:600;
+  }
+  p{margin:0;color:var(--ink-1);}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  ul{margin:0;padding:0;list-style:none;}
+  button{font-family:inherit;cursor:pointer;}
+  section{position:relative;z-index:1;}
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+  @media (max-width:640px){ .wrap{padding:0 22px;} }
+
+  /* background weave: subtle vertical gradient band across whole page */
+  .bg-weave{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    background:
+      radial-gradient(ellipse 900px 520px at 18% -6%, rgba(79,155,255,0.14), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 90% 18%, rgba(79,155,255,0.08), transparent 55%),
+      linear-gradient(180deg, var(--bg-0) 0%, var(--bg-1) 35%, var(--navy-deep) 70%, var(--bg-0) 100%);
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    padding:calc(18px + env(safe-area-inset-top,0px)) 0 18px;
+    background:rgba(6,10,20,0.90);
+    border-bottom:1px solid transparent;
+    transition:background .4s ease, border-color .4s ease, padding .3s ease;
+  }
+  header.nav.scrolled{
+   background:rgba(6,10,20,0.90);
+    backdrop-filter:blur(16px) saturate(140%);
+    -webkit-backdrop-filter:blur(16px) saturate(140%);
+    border-bottom:1px solid var(--line-0);
+    padding-top:calc(12px + env(safe-area-inset-top,0px));
+    padding-bottom:12px;
+  }
+  .nav-row{display:flex;align-items:center;justify-content:space-between;gap:24px;}
+  .logo{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700; font-size:20px; letter-spacing:-0.02em;
+    display:flex; align-items:center; gap:10px;
+  }
+  .logo.logo{
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:700;
+  font-size:20px;
+  letter-spacing:-0.02em;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+/* APExDev Logo Image */
+.logo.logo{
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:700;
+  font-size:20px;
+  letter-spacing:-0.02em;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+/* APExDev Logo Image */
+.logo img {
+    height: 42px;
+    width: auto;
+    display: block;
+  }
+  nav.links{display:flex;gap:34px;}
+  nav.links a{
+    font-size:14.5px; color:var(--ink-1); font-weight:500;
+    position:relative; padding:4px 0;
+    transition:color .25s ease;
+  }
+  nav.links a::after{
+    content:''; position:absolute; left:0; right:100%; bottom:-2px; height:1px;
+    background:var(--blue-soft); transition:right .3s ease;
+  }
+  nav.links a:hover{color:var(--ink-0);}
+  nav.links a:hover::after{right:0;}
+  .nav-cta{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:11px 22px; border-radius:999px;
+    background:var(--ink-0); color:#060b14; font-weight:600; font-size:14px;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .nav-cta:hover{transform:translateY(-2px); box-shadow:0 10px 30px rgba(79,155,255,0.25);}
+  .burger{display:none; width:38px;height:38px;border-radius:9px;background:var(--glass);border:1px solid var(--line-0);align-items:center;justify-content:center;flex-shrink:0;}
+  .burger span, .burger span::before, .burger span::after{
+    content:''; display:block; width:16px; height:1.5px; background:var(--ink-0); position:relative; transition:.25s ease;
+  }
+  .burger span::before{position:absolute; top:-5px;}
+  .burger span::after{position:absolute; top:5px;}
+  .mobile-menu{
+    display:none; position:fixed; inset:0; z-index:99; background:rgba(6,10,20,0.90);
+    backdrop-filter:blur(10px);
+    flex-direction:column; align-items:center; justify-content:center; gap:30px;
+    opacity:0; visibility:hidden; transition:opacity .3s ease;
+  }
+  .mobile-menu.open{opacity:1; visibility:visible;}
+  .mobile-menu a{font-family:'Space Grotesk',sans-serif; font-size:24px; font-weight:600;}
+  .mobile-menu .nav-cta{margin-top:10px;}
+  @media (max-width:860px){
+    nav.links{display:none;}
+    .nav-cta.desktop-only{display:none;}
+    .burger{display:flex;}
+    .mobile-menu{display:flex;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    min-height:100dvh;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center;
+    padding:150px 0 80px;
+    overflow:hidden;
+  }
+  #particle-canvas{
+    position:absolute; inset:0; width:100%; height:100%; z-index:0;
+    opacity:0.85;
+  }
+  .hero-glow{
+    position:absolute; z-index:0; pointer-events:none;
+    width:900px; height:900px; max-width:180vw;
+    left:50%; top:38%; transform:translate(-50%,-50%);
+    background:radial-gradient(circle, rgba(79,155,255,0.16) 0%, rgba(79,155,255,0.05) 40%, transparent 70%);
+    filter:blur(10px);
+  }
+  .hero-inner{position:relative; z-index:2; max-width:900px; padding:0 24px;}
+  .eyebrow-tag{
+    display:inline-flex; align-items:center; gap:9px;
+    padding:8px 16px; border-radius:999px;
+    background:var(--glass); border:1px solid var(--line-0);
+    font-size:13px; color:var(--ink-1); margin-bottom:34px;
+    letter-spacing:0.01em;
+  }
+  .eyebrow-tag .dot{width:6px;height:6px;border-radius:50%;background:var(--blue-electric); box-shadow:0 0 8px var(--blue-electric); animation:pulse-dot 2.2s ease-in-out infinite;}
+  @keyframes pulse-dot{0%,100%{opacity:1;} 50%{opacity:0.35;}}
+  .hero h1{
+    font-size:clamp(2.6rem, 7.4vw, 5.6rem);
+    line-height:1.04;
+    font-weight:700;
+    color:var(--ink-0);
+    text-shadow:0 0 70px rgba(79,155,255,0.25);
+  }
+  .hero h1 .accent{color:var(--blue-soft);}
+  .hero-sub{
+    max-width:600px; margin:30px auto 0;
+    font-size:clamp(1.02rem,1.6vw,1.2rem);
+    color:var(--ink-1);
+  }
+  .hero-ctas{
+    display:flex; gap:16px; justify-content:center; margin-top:46px; flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:15px 30px; border-radius:999px;
+    font-weight:600; font-size:15px; border:1px solid transparent;
+    transition:transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s ease, background .3s ease, border-color .3s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg,#5ea6ff,#2f6fe0);
+    color:#04070f;
+    box-shadow:0 8px 30px rgba(79,155,255,0.32);
+  }
+  .btn-primary:hover{transform:translateY(-3px); box-shadow:0 14px 40px rgba(79,155,255,0.45);}
+  .btn-ghost{
+    background:var(--glass); color:var(--ink-0); border-color:var(--line-1);
+  }
+  .btn-ghost:hover{background:var(--glass-hi); border-color:var(--blue-dim); transform:translateY(-3px);}
+  .scroll-indicator{
+    position:absolute; bottom:38px; left:50%; transform:translateX(-50%); z-index:2;
+    display:flex; flex-direction:column; align-items:center; gap:10px;
+  }
+  .scroll-indicator .track{
+    width:1px; height:46px; background:linear-gradient(180deg, var(--blue-soft), transparent);
+    position:relative; overflow:hidden;
+  }
+  .scroll-indicator .track::after{
+    content:''; position:absolute; left:-1px; top:-20px; width:3px; height:16px; border-radius:2px;
+    background:var(--blue-electric); box-shadow:0 0 8px var(--blue-electric);
+    animation:scroll-fall 2s ease-in-out infinite;
+  }
+  @keyframes scroll-fall{ 0%{top:-16px; opacity:0;} 20%{opacity:1;} 90%{opacity:1;} 100%{top:46px; opacity:0;} }
+  .scroll-indicator span{font-size:11px; letter-spacing:0.12em; color:var(--ink-2); text-transform:uppercase;}
+
+  /* ---------- section headers ---------- */
+  .sec-head{max-width:640px; margin:0 auto 64px;}
+  .sec-head.left{margin:0 0 56px;}
+  .sec-kicker{color:var(--blue-soft); font-size:14px; font-weight:600; margin-bottom:14px; display:block;}
+  .sec-head h2{font-size:clamp(1.9rem,3.6vw,2.7rem); line-height:1.15;}
+  .sec-head p{margin-top:18px; font-size:1.04rem;}
+  .center{text-align:center;}
+  .section-pad{padding:130px 0;}
+  @media (max-width:720px){ .section-pad{padding:88px 0;} }
+
+  .reveal{opacity:0; transform:translateY(26px); transition:opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1);}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* divider */
+  .divider{height:1px; background:linear-gradient(90deg, transparent, var(--line-0) 20%, var(--line-0) 80%, transparent);}
+
+  /* ---------- SERVICES ---------- */
+  .services-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:22px;
+  }
+  @media (max-width:960px){ .services-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:620px){ .services-grid{grid-template-columns:1fr;} }
+  .service-card{
+    position:relative;
+    padding:34px 28px 30px;
+    border-radius:var(--radius);
+    background:var(--glass);
+    border:1px solid var(--line-0);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    overflow:hidden;
+    transition:transform .45s cubic-bezier(.2,.8,.2,1), border-color .45s ease, background .45s ease;
+  }
+  .service-card::before{
+    content:''; position:absolute; inset:0; border-radius:inherit; padding:1px;
+    background:linear-gradient(135deg, rgba(79,155,255,0.5), transparent 40%);
+    -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite:xor; mask-composite:exclude;
+    opacity:0; transition:opacity .45s ease;
+    pointer-events:none;
+  }
+  .service-card::after{
+    content:''; position:absolute; width:220px; height:220px; border-radius:50%;
+    background:radial-gradient(circle, rgba(79,155,255,0.22), transparent 70%);
+    top:-90px; right:-90px; opacity:0; transition:opacity .5s ease;
+    pointer-events:none;
+  }
+  .service-card:hover{transform:translateY(-8px); border-color:rgba(79,155,255,0.35); background:rgba(255,255,255,0.055);}
+  .service-card:hover::before{opacity:1;}
+  .service-card:hover::after{opacity:1;}
+  .service-icon{
+    width:52px;height:52px;border-radius:14px;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(160deg, rgba(79,155,255,0.16), rgba(79,155,255,0.02));
+    border:1px solid rgba(79,155,255,0.22);
+    margin-bottom:24px; position:relative; z-index:1;
+    transition:box-shadow .4s ease;
+  }
+  .service-card:hover .service-icon{box-shadow:0 0 26px rgba(79,155,255,0.35);}
+  .service-icon svg{width:24px;height:24px; stroke:var(--blue-soft); fill:none; stroke-width:1.6;}
+  .service-card h3{font-size:1.18rem; margin-bottom:11px; position:relative; z-index:1;}
+  .service-card p{font-size:0.95rem; position:relative; z-index:1;}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:70px; align-items:center;}
+  @media (max-width:880px){ .about-grid{grid-template-columns:1fr; gap:44px;} }
+  .about-copy p{font-size:1.06rem; margin-top:20px;}
+  .stat-row{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:44px;}
+  @media (max-width:520px){ .stat-row{grid-template-columns:1fr 1fr; gap:16px;} }
+  .stat-card{
+    padding:22px 18px; border-radius:14px; background:var(--glass); border:1px solid var(--line-0);
+  }
+  .stat-num{font-family:'Space Grotesk',sans-serif; font-size:2rem; font-weight:700; color:var(--ink-0);}
+  .stat-num span{color:var(--blue-soft);}
+  .stat-label{font-size:0.82rem; color:var(--ink-2); margin-top:6px;}
+  .about-visual{
+    position:relative; aspect-ratio:1/1; border-radius:24px;
+    background:linear-gradient(155deg, rgba(79,155,255,0.1), rgba(6,10,20,0.4));
+    border:1px solid var(--line-0);
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .about-visual .core{
+    width:56%; height:56%; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, rgba(126,180,255,0.55), rgba(79,155,255,0.05) 70%);
+    box-shadow:0 0 90px rgba(79,155,255,0.4);
+    animation:breathe 6s ease-in-out infinite;
+  }
+  @keyframes breathe{0%,100%{transform:scale(1);} 50%{transform:scale(1.06);}}
+  .about-visual .ring{
+    position:absolute; border:1px solid rgba(79,155,255,0.25); border-radius:50%;
+  }
+  .ring.r1{width:78%; height:78%; animation:spin 26s linear infinite;}
+  .ring.r2{width:94%; height:94%; border-style:dashed; animation:spin 40s linear infinite reverse;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  /* ---------- PROCESS ---------- */
+  .process-line{position:relative; margin-top:20px;}
+  .process-line .rail{
+    position:absolute; left:29px; top:8px; bottom:8px; width:1px;
+    background:linear-gradient(180deg, rgba(79,155,255,0.6), rgba(79,155,255,0.05));
+  }
+  @media (min-width:860px){
+    .process-line .rail{left:50%; top:0; bottom:0; width:1px; height:100%;}
+  }
+  .process-step{
+    display:grid; grid-template-columns:60px 1fr; gap:26px;
+    padding:26px 0; position:relative;
+  }
+  @media (min-width:860px){
+    .process-step{grid-template-columns:1fr 60px 1fr; gap:0; align-items:center;}
+    .process-step .p-num{order:2; justify-self:center;}
+    .process-step .p-body{order:1; text-align:right; padding-right:46px;}
+    .process-step:nth-child(even) .p-body{order:3; text-align:left; padding-right:0; padding-left:46px;}
+    .process-step:nth-child(even) .p-spacer{order:1;}
+  }
+  .p-num{
+    width:58px; height:58px; border-radius:50%;
+    background:var(--bg-1); border:1px solid rgba(79,155,255,0.35);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:1.05rem; color:var(--blue-soft);
+    box-shadow:0 0 0 6px var(--bg-0), 0 0 24px rgba(79,155,255,0.25);
+    z-index:1; flex-shrink:0;
+  }
+  .process-step.in-view .p-num{box-shadow:0 0 0 6px var(--bg-0), 0 0 34px rgba(79,155,255,0.55); border-color:var(--blue-electric);}
+  .p-body h3{font-size:1.35rem; margin-bottom:9px;}
+  .p-body p{font-size:0.98rem;}
+
+  /* ---------- WHY CHOOSE ---------- */
+  .why-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line-0); border:1px solid var(--line-0); border-radius:var(--radius); overflow:hidden;}
+  @media (max-width:720px){ .why-grid{grid-template-columns:1fr;} }
+  .why-item{background:var(--bg-1); padding:38px 34px; transition:background .35s ease;}
+  .why-item:hover{background:rgba(79,155,255,0.045);}
+  .why-item .num{font-family:'Space Grotesk',sans-serif; color:var(--blue-dim); font-size:0.85rem; font-weight:600; letter-spacing:0.06em;}
+  .why-item h3{margin-top:14px; font-size:1.2rem;}
+  .why-item p{margin-top:10px; font-size:0.96rem;}
+
+  /* ---------- PORTFOLIO ---------- */
+  .portfolio-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  @media (max-width:960px){ .portfolio-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:620px){ .portfolio-grid{grid-template-columns:1fr;} }
+  .case-card{
+    border-radius:var(--radius); overflow:hidden; border:1px solid var(--line-0);
+    background:var(--bg-1); position:relative;
+    transition:transform .45s cubic-bezier(.2,.8,.2,1), border-color .4s ease;
+  }
+  .case-card:hover{transform:translateY(-8px); border-color:rgba(79,155,255,0.3);}
+  .case-thumb{
+    aspect-ratio:4/3; position:relative; overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .case-thumb svg{width:100%;height:100%;}
+  .case-tag{position:absolute; top:16px; left:16px; padding:6px 13px; border-radius:999px; background:rgba(5,8,16,0.6); backdrop-filter:blur(6px); font-size:11.5px; letter-spacing:0.03em; border:1px solid var(--line-0); color:var(--ink-1);}
+  .case-body{padding:24px 24px 26px;}
+  .case-body h3{font-size:1.12rem; margin-bottom:8px;}
+  .case-body p{font-size:0.92rem;}
+  .case-metric{display:flex; align-items:baseline; gap:8px; margin-top:16px;}
+  .case-metric .big{font-family:'Space Grotesk',sans-serif; font-size:1.5rem; font-weight:700; color:var(--blue-soft);}
+  .case-metric .lbl{font-size:0.82rem; color:var(--ink-2);}
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testi-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  @media (max-width:960px){ .testi-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:640px){ .testi-grid{grid-template-columns:1fr;} }
+  .testi-card{
+    padding:30px 26px; border-radius:var(--radius);
+    background:var(--glass); border:1px solid var(--line-0);
+    display:flex; flex-direction:column; gap:20px;
+    transition:border-color .4s ease, transform .4s ease;
+  }
+  .testi-card:hover{border-color:rgba(79,155,255,0.28); transform:translateY(-6px);}
+  .testi-stars{color:var(--blue-soft); font-size:14px; letter-spacing:2px;}
+  .testi-quote{font-size:0.98rem; color:var(--ink-1); line-height:1.65;}
+  .testi-person{display:flex; align-items:center; gap:12px; margin-top:auto;}
+  .avatar{
+    width:40px; height:40px; border-radius:50%;
+    background:linear-gradient(135deg, var(--blue-electric), var(--blue-dim));
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:14px; color:#04070f;
+    flex-shrink:0;
+  }
+  .p-name{font-size:0.9rem; font-weight:600; color:var(--ink-0);}
+  .p-role{font-size:0.8rem; color:var(--ink-2);}
+
+  /* ---------- PRICING ---------- */
+  .pricing-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px; align-items:stretch;}
+  @media (max-width:900px){ .pricing-grid{grid-template-columns:1fr; max-width:420px; margin:0 auto;} }
+  .price-card{
+    border-radius:20px; padding:38px 32px; background:var(--glass); border:1px solid var(--line-0);
+    display:flex; flex-direction:column;
+    transition:transform .4s ease, border-color .4s ease;
+  }
+  .price-card:hover{transform:translateY(-6px);}
+  .price-card.featured{
+    background:linear-gradient(180deg, rgba(79,155,255,0.09), rgba(255,255,255,0.03));
+    border:1px solid rgba(79,155,255,0.45);
+    box-shadow:0 25px 70px rgba(79,155,255,0.16);
+    position:relative;
+  }
+  @media (min-width:901px){ .price-card.featured{transform:translateY(-14px);} .price-card.featured:hover{transform:translateY(-20px);} }
+  .price-badge{
+    position:absolute; top:-13px; left:50%; transform:translateX(-50%);
+    background:var(--ink-0); color:#050810; font-size:11.5px; font-weight:700;
+    padding:6px 16px; border-radius:999px; letter-spacing:0.03em;
+  }
+  .price-tier{font-size:0.85rem; color:var(--blue-soft); font-weight:600; letter-spacing:0.04em;}
+  .price-amount{font-family:'Space Grotesk',sans-serif; font-size:2.5rem; font-weight:700; margin-top:16px; color:var(--ink-0);}
+  .price-amount span{font-size:0.95rem; color:var(--ink-2); font-weight:500; font-family:'Inter',sans-serif;}
+  .price-desc{margin-top:12px; font-size:0.92rem;}
+  .price-feats{margin-top:28px; display:flex; flex-direction:column; gap:14px; flex-grow:1;}
+  .price-feats li{display:flex; align-items:flex-start; gap:10px; font-size:0.92rem; color:var(--ink-1);}
+  .price-feats svg{width:16px; height:16px; stroke:var(--blue-soft); flex-shrink:0; margin-top:3px;}
+  .price-btn{margin-top:30px; text-align:center; padding:14px; border-radius:12px; font-weight:600; font-size:14.5px; border:1px solid var(--line-1); transition:all .3s ease;}
+  .price-btn:hover{background:var(--glass-hi);}
+  .price-card.featured .price-btn{background:linear-gradient(135deg,#5ea6ff,#2f6fe0); color:#04070f; border:none;}
+  .price-card.featured .price-btn:hover{box-shadow:0 10px 30px rgba(79,155,255,0.35);}
+  .price-note{text-align:center; margin-top:36px; font-size:0.88rem; color:var(--ink-2);}
+
+  /* ---------- FAQ ---------- */
+  .faq-list{max-width:760px; margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--line-0);}
+  .faq-q{
+    display:flex; align-items:center; justify-content:space-between; gap:20px;
+    padding:24px 4px; cursor:pointer;
+  }
+  .faq-q h3{font-size:1.05rem; font-weight:500; color:var(--ink-0);}
+  .faq-icon{width:20px; height:20px; flex-shrink:0; position:relative;}
+  .faq-icon::before, .faq-icon::after{content:''; position:absolute; background:var(--blue-soft); border-radius:2px; transition:transform .3s ease;}
+  .faq-icon::before{width:14px; height:1.6px; top:9px; left:3px;}
+  .faq-icon::after{width:1.6px; height:14px; top:3px; left:9px;}
+  .faq-item.open .faq-icon::after{transform:rotate(90deg); opacity:0;}
+  .faq-a{max-height:0; overflow:hidden; transition:max-height .4s ease;}
+  .faq-a p{padding:0 4px 24px; font-size:0.96rem; max-width:640px;}
+
+  /* ---------- CONTACT ---------- */
+  .contact-shell{
+    border-radius:26px; border:1px solid var(--line-0);
+    background:linear-gradient(155deg, rgba(79,155,255,0.07), rgba(255,255,255,0.02));
+    padding:64px;
+    display:grid; grid-template-columns:0.9fr 1.1fr; gap:60px;
+    position:relative; overflow:hidden;
+  }
+  @media (max-width:900px){ .contact-shell{grid-template-columns:1fr; padding:40px 26px; gap:36px;} }
+  .contact-info h2{font-size:clamp(1.8rem,3.2vw,2.3rem); line-height:1.15;}
+  .contact-info p{margin-top:18px; font-size:1rem;}
+  .contact-points{margin-top:36px; display:flex; flex-direction:column; gap:20px;}
+  .contact-point{display:flex; gap:14px; align-items:flex-start;}
+  .contact-point .ic{width:38px;height:38px;border-radius:10px;background:rgba(79,155,255,0.12); border:1px solid rgba(79,155,255,0.25); display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+  .contact-point .ic svg{width:17px;height:17px; stroke:var(--blue-soft); fill:none; stroke-width:1.6;}
+  .contact-point .txt div:first-child{font-size:0.85rem; color:var(--ink-2);}
+  .contact-point .txt div:last-child{font-size:0.98rem; color:var(--ink-0); margin-top:2px;}
+
+  form.lead-form{display:flex; flex-direction:column; gap:16px;}
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  @media (max-width:560px){ .form-row{grid-template-columns:1fr;} }
+  .field label{display:block; font-size:0.82rem; color:var(--ink-2); margin-bottom:8px;}
+  .field input, .field select, .field textarea{
+    width:100%; padding:13px 15px; border-radius:11px;
+    background:rgba(255,255,255,0.03); border:1px solid var(--line-0); color:var(--ink-0);
+    font-family:inherit; font-size:0.94rem; outline:none;
+    transition:border-color .3s ease, background .3s ease, box-shadow .3s ease;
+  }
+  .field select{appearance:none; -webkit-appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%237fb4ff' stroke-width='1.5'/%3E%3C/svg%3E");
+    background-repeat:no-repeat; background-position:right 15px center;
+  }
+  .field select option{background:#0b1424; color:var(--ink-0);}
+  .field input::placeholder, .field textarea::placeholder{color:var(--ink-2);}
+  .field input:focus, .field select:focus, .field textarea:focus{
+    border-color:rgba(79,155,255,0.55); background:rgba(79,155,255,0.05); box-shadow:0 0 0 4px rgba(79,155,255,0.1);
+  }
+  .field textarea{resize:vertical; min-height:110px;}
+  .form-submit{
+    margin-top:6px; padding:15px; border-radius:12px; border:none;
+    background:linear-gradient(135deg,#5ea6ff,#2f6fe0); color:#04070f; font-weight:600; font-size:15px;
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .form-submit:hover{transform:translateY(-2px); box-shadow:0 12px 32px rgba(79,155,255,0.35);}
+  .form-note{font-size:0.8rem; color:var(--ink-2); text-align:center;}
+  .form-success{
+    display:none; text-align:center; padding:50px 20px;
+    flex-direction:column; align-items:center; gap:14px;
+  }
+  .form-success.show{display:flex;}
+  .form-success .tick{width:56px;height:56px;border-radius:50%;background:rgba(79,155,255,0.12); border:1px solid rgba(79,155,255,0.4); display:flex; align-items:center; justify-content:center;}
+  .form-success .tick svg{width:26px;height:26px; stroke:var(--blue-soft); fill:none; stroke-width:2;}
+  .form-success h3{font-size:1.3rem;}
+  .form-success p{font-size:0.95rem; max-width:340px;}
+
+  /* ---------- BIG CTA ---------- */
+  .big-cta{
+    text-align:center; padding:110px 0; position:relative;
+  }
+  .big-cta h2{font-size:clamp(2rem,5vw,3.4rem); line-height:1.1;}
+  .big-cta p{margin:20px auto 0; max-width:520px; font-size:1.05rem;}
+  .big-cta .hero-ctas{margin-top:40px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--line-0); padding:74px 0 34px; position:relative; z-index:1;}
+  .footer-grid{display:grid; grid-template-columns:1.4fr 0.8fr 0.8fr 1fr; gap:48px;}
+  @media (max-width:860px){ .footer-grid{grid-template-columns:1fr 1fr; gap:36px;} }
+  @media (max-width:520px){ .footer-grid{grid-template-columns:1fr;} }
+  .footer-brand p{margin-top:16px; font-size:0.92rem; max-width:280px;}
+  .footer-col h4{font-size:0.85rem; color:var(--ink-0); margin-bottom:18px; font-weight:600;}
+  .footer-col ul{display:flex; flex-direction:column; gap:12px;}
+  .footer-col a{font-size:0.92rem; color:var(--ink-2); transition:color .25s ease;}
+  .footer-col a:hover{color:var(--blue-soft);}
+  .footer-contact li{font-size:0.92rem; color:var(--ink-2); margin-bottom:12px;}
+  .social-row{display:flex; gap:10px; margin-top:22px; flex-wrap:wrap;}
+  .social-row a{
+    width:38px; height:38px; border-radius:10px; background:var(--glass); border:1px solid var(--line-0);
+    display:flex; align-items:center; justify-content:center; transition:all .3s ease;
+  }
+  .social-row a:hover{background:rgba(79,155,255,0.14); border-color:rgba(79,155,255,0.4); transform:translateY(-3px);}
+  .social-row svg{width:16px;height:16px; stroke:var(--ink-1); fill:none; stroke-width:1.6; transition:stroke .3s ease;}
+  .social-row a:hover svg{stroke:var(--blue-soft);}
+  .footer-bottom{
+    margin-top:60px; padding-top:26px; border-top:1px solid var(--line-0);
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;
+  }
+  .footer-bottom p{font-size:0.82rem; color:var(--ink-2);}
+
+  ::selection{background:rgba(79,155,255,0.35); color:#fff;}
+  :focus-visible{outline:2px solid var(--blue-soft); outline-offset:3px;}
+</style>
+</head>
+<body>
+
+<div class="bg-weave"></div>
+
+<header class="nav" id="siteNav">
+  <div class="wrap nav-row">
+    <a href="#top" class="logo">
+        <img src="ChatGPT Image Sep 22, 2026, 12_39_30 PM.png" alt="ApexDev Logo">
+    </a>
+    <nav class="links">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="nav-cta desktop-only">Start Your Project</a>
+    <button class="burger" id="burgerBtn" aria-label="Open menu"><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" class="m-link">Services</a>
+  <a href="#process" class="m-link">Process</a>
+  <a href="#portfolio" class="m-link">Portfolio</a>
+  <a href="#pricing" class="m-link">Pricing</a>
+  <a href="#faq" class="m-link">FAQ</a>
+  <a href="#contact" class="m-link">Contact</a>
+  <a href="#contact" class="btn btn-primary m-link">Start Your Project</a>
+</div>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <canvas id="particle-canvas"></canvas>
+    <div class="hero-glow"></div>
+    <div class="hero-inner">
+      <span class="eyebrow-tag"><span class="dot"></span>Full-service digital agency</span>
+      <h1>WE BUILD. WE GROW. <span class="accent">WE SCALE.</span></h1>
+      <p class="hero-sub">Web Development, Digital Marketing &amp; Creative Solutions for businesses ready to grow.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">Start Your Project</a>
+        <a href="#services" class="btn btn-ghost">Explore Services</a>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="track"></div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section-pad" id="services">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <span class="sec-kicker">What we do</span>
+        <h2>Every discipline your growth needs, under one roof</h2>
+        <p>From first line of code to first thousand customers — we design, build and market the systems that scale with you.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M8 4L2 12L8 20M16 4L22 12L16 20" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Website Development</h3>
+          <p>Fast, modern, conversion-focused websites built on clean architecture — designed to load instantly and rank well.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M4 4h2l2.4 12.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6L21 8H7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="21" r="1"/><circle cx="17" cy="21" r="1"/></svg></div>
+          <h3>E-Commerce Development</h3>
+          <p>High-performing online stores with seamless checkout, inventory automation and payment integrations built to sell.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.6-4.6" stroke-linecap="round"/></svg></div>
+          <h3>SEO</h3>
+          <p>Technical, on-page and content SEO that compounds — moving you up the rankings where your buyers are already searching.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.4 10.7L15.6 6.3M8.4 13.3L15.6 17.7" stroke-linecap="round"/></svg></div>
+          <h3>Social Media Marketing</h3>
+          <p>Content strategy, scroll-stopping creative and community management that builds real, engaged audiences.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="0.6" fill="currentColor"/></svg></div>
+          <h3>Meta &amp; Google Ads</h3>
+          <p>Paid campaigns engineered around a single number — return on ad spend. Targeted, tested and continuously optimized.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M3 16l5-5a2.4 2.4 0 0 1 3.4 0l1.6 1.6M12 12l2-2a2.4 2.4 0 0 1 3.4 0L21 13.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7.5" cy="7.5" r="2"/><rect x="3" y="3" width="18" height="18" rx="3"/></svg></div>
+          <h3>Branding &amp; Graphic Design</h3>
+          <p>Identity systems, logo design and visual language that make a business instantly recognizable and trusted.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- ABOUT -->
+  <section class="section-pad" id="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="about-copy reveal">
+          <span class="sec-kicker">About ApexDev</span>
+          <h2 style="font-size:clamp(1.9rem,3.6vw,2.6rem); line-height:1.2;">A digital agency built for businesses that refuse to stay small</h2>
+          <p>ApexDev was founded on a simple idea: growth shouldn't require juggling five different agencies. We bring development, marketing and design under one team, so every part of your digital presence pulls in the same direction.</p>
+          <p>We work as an extension of your business — close enough to understand your goals, structured enough to deliver on them consistently, month after month.</p>
+          <div class="stat-row">
+            <div class="stat-card"><div class="stat-num">120<span>+</span></div><div class="stat-label">Projects delivered</div></div>
+            <div class="stat-card"><div class="stat-num">98<span>%</span></div><div class="stat-label">Client retention</div></div>
+            <div class="stat-card"><div class="stat-num">6<span>+</span></div><div class="stat-label">Years in business</div></div>
+          </div>
+        </div>
+        <div class="about-visual reveal">
+          <div class="ring r2"></div>
+          <div class="ring r1"></div>
+          <div class="core"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- PROCESS -->
+  <section class="section-pad" id="process">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <span class="sec-kicker">How we work</span>
+        <h2>Our Process</h2>
+        <p>A clear, repeatable path from first conversation to sustained growth — no guesswork, no wasted cycles.</p>
+      </div>
+      <div class="process-line">
+        <div class="rail"></div>
+        <div class="process-step reveal">
+          <div class="p-num">01</div>
+          <div class="p-body"><h3>Discover</h3><p>We map your business, your market and your goals — understanding what growth actually needs to look like for you.</p></div>
+        </div>
+        <div class="process-step reveal">
+          <div class="p-num">02</div>
+          <div class="p-body"><h3>Strategy</h3><p>A tailored roadmap across web, marketing and brand — prioritized by impact, not by what's easiest to sell.</p></div>
+        </div>
+        <div class="process-step reveal">
+          <div class="p-num">03</div>
+          <div class="p-body"><h3>Create</h3><p>Our team designs and builds — websites, campaigns and creative — with weekly visibility into progress.</p></div>
+        </div>
+        <div class="process-step reveal">
+          <div class="p-num">04</div>
+          <div class="p-body"><h3>Launch</h3><p>We ship carefully, test thoroughly, and go live with everything wired for tracking from day one.</p></div>
+        </div>
+        <div class="process-step reveal">
+          <div class="p-num">05</div>
+          <div class="p-body"><h3>Grow</h3><p>Ongoing optimization across SEO, ads and content — turning launch momentum into compounding growth.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- WHY CHOOSE -->
+  <section class="section-pad" id="why">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <span class="sec-kicker">Why ApexDev</span>
+        <h2>Why Choose ApexDev</h2>
+      </div>
+      <div class="why-grid reveal">
+        <div class="why-item"><span class="num">01</span><h3>One team, every discipline</h3><p>No handoffs between vendors — your developers, marketers and designers work from the same plan.</p></div>
+        <div class="why-item"><span class="num">02</span><h3>Data over guesswork</h3><p>Every decision is backed by performance data — from ad spend to site speed to conversion rate.</p></div>
+        <div class="why-item"><span class="num">03</span><h3>Transparent reporting</h3><p>Clear monthly reports and a direct line to your team — you always know exactly where things stand.</p></div>
+        <div class="why-item"><span class="num">04</span><h3>Built to scale with you</h3><p>Our packages and systems are designed to grow alongside your business, not lock you into one size.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- PORTFOLIO -->
+  <section class="section-pad" id="portfolio">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <span class="sec-kicker">Our work</span>
+        <h2>Portfolio &amp; Case Studies</h2>
+        <p>A look at the outcomes behind the work — real businesses, measurable growth.</p>
+      </div>
+      <div class="portfolio-grid">
+        <div class="case-card reveal">
+          <div class="case-thumb" style="background:linear-gradient(135deg,#0d1a30,#132546);">
+            <span class="case-tag">E-Commerce</span>
+            <svg viewBox="0 0 300 220"><defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4f9bff" stop-opacity="0.5"/><stop offset="1" stop-color="#4f9bff" stop-opacity="0"/></linearGradient></defs><polyline points="20,170 70,140 110,155 150,90 190,110 230,55 280,70" fill="none" stroke="#7fb4ff" stroke-width="2"/><polygon points="20,170 70,140 110,155 150,90 190,110 230,55 280,70 280,200 20,200" fill="url(#g1)"/></svg>
+          </div>
+          <div class="case-body">
+            <h3>Retail Fashion Storefront</h3>
+            <p>Full rebuild of an online store with a streamlined checkout and refreshed brand system.</p>
+            <div class="case-metric"><span class="big">+164%</span><span class="lbl">online revenue in 5 months</span></div>
+          </div>
+        </div>
+        <div class="case-card reveal">
+          <div class="case-thumb" style="background:linear-gradient(135deg,#0d1a30,#12203d);">
+            <span class="case-tag">SEO</span>
+            <svg viewBox="0 0 300 220"><polyline points="20,190 60,180 100,160 140,150 180,110 220,80 260,40" fill="none" stroke="#7fb4ff" stroke-width="2"/><circle cx="260" cy="40" r="4" fill="#7fb4ff"/></svg>
+          </div>
+          <div class="case-body">
+            <h3>B2B SaaS Search Growth</h3>
+            <p>A technical SEO overhaul and content system built around buyer search intent.</p>
+            <div class="case-metric"><span class="big">3.8x</span><span class="lbl">organic traffic in 9 months</span></div>
+          </div>
+        </div>
+        <div class="case-card reveal">
+          <div class="case-thumb" style="background:linear-gradient(135deg,#0d1a30,#122645);">
+            <span class="case-tag">Paid Ads</span>
+            <svg viewBox="0 0 300 220"><rect x="30" y="120" width="26" height="70" fill="#2f6fe0"/><rect x="80" y="90" width="26" height="100" fill="#3f80f2"/><rect x="130" y="60" width="26" height="130" fill="#5ea6ff"/><rect x="180" y="40" width="26" height="150" fill="#7fb4ff"/><rect x="230" y="20" width="26" height="170" fill="#9cc5ff"/></svg>
+          </div>
+          <div class="case-body">
+            <h3>Local Service Ad Rollout</h3>
+            <p>Meta and Google campaigns rebuilt around qualified leads instead of raw clicks.</p>
+            <div class="case-metric"><span class="big">-42%</span><span class="lbl">cost per qualified lead</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- TESTIMONIALS -->
+  <section class="section-pad" id="testimonials">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <span class="sec-kicker">Client voices</span>
+        <h2>Client Testimonials</h2>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card reveal">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">ApexDev rebuilt our entire online presence in under two months. Our site is faster, our ads finally convert, and we're not chasing five different vendors anymore.</p>
+          <div class="testi-person"><div class="avatar">RH</div><div><div class="p-name">Rehan Hussain</div><div class="p-role">Founder, Northline Retail</div></div></div>
+        </div>
+        <div class="testi-card reveal">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">What stood out was the reporting. We always knew exactly what was working and why — no vague updates, just clear numbers every month.</p>
+          <div class="testi-person"><div class="avatar">SA</div><div><div class="p-name">Sana Anwar</div><div class="p-role">Marketing Lead, Verdant Foods</div></div></div>
+        </div>
+        <div class="testi-card reveal">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">Our organic traffic nearly quadrupled within a year of working with the ApexDev team. They understand growth, not just design.</p>
+          <div class="testi-person"><div class="avatar">TK</div><div><div class="p-name">Tariq Khan</div><div class="p-role">CEO, Bridgeview SaaS</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- PRICING -->
+  <section class="section-pad" id="pricing">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <span class="sec-kicker">Packages</span>
+        <h2>Simple, transparent pricing</h2>
+        <p>Choose the level of support that matches where your business is right now — every package can grow with you.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="price-card reveal">
+          <span class="price-tier">STARTER</span>
+          <div class="price-amount">Rs. 8,000<span>/month</span></div>
+          <p class="price-desc">For new businesses that need a solid, professional foundation online.</p>
+          <ul class="price-feats">
+            <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg>5-page responsive website</li>
+            <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg>Basic on-page SEO setup</li>
+            <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg>2 social media posts / week</li>
+            <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg>Monthly performance report</li>
+          </ul>
+          <a href="#contact" class="price-btn">Get Started</a>
+        </div>
+        <div class="price-card featured reveal">
+          <span class="price-badge">Most Popular</span>
+          <span class="price-tier">GROWTH</span>
+          <div class="price-amount">Rs. 18,000<span>/month</span></div>
+          <p class="price-desc">For growing businesses ready to invest seriously in acquisition.</p>
+          <ul class="price-feats">
+            <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Starter, plus:</li>
+            <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg>E-commerce or custom web build</li>
+            <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg>Meta &amp; Google Ads management</li>
+            <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg>Full SEO strategy &amp; execution</li>
+            <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg>Daily social media management</li>
+          </ul>
+          <a href="#contact" class="price-btn">Get Started</a>
+        </div>
+        <div class="price-card reveal">
+          <span class="price-tier">PREMIUM</span>
+          <div class="price-amount">Rs. 30,000<span>/month</span></div>
+          <p class="price-desc">For established brands that need a dedicated full-service team.</p>
+          <ul class="price-feats">
+            <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Growth, plus:</li>
+            <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg>Dedicated account manager</li>
+            <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg>Full brand identity &amp; design system</li>
+            <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg>Advanced funnel &amp; CRO strategy</li>
+            <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg>Priority support &amp; weekly calls</li>
+          </ul>
+          <a href="#contact" class="price-btn">Get Started</a>
+        </div>
+      </div>
+      <p class="price-note">Custom scopes and enterprise plans available on request.</p>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- FAQ -->
+  <section class="section-pad" id="faq">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <span class="sec-kicker">Questions</span>
+        <h2>Frequently Asked Questions</h2>
+      </div>
+      <div class="faq-list reveal">
+        <div class="faq-item open">
+          <div class="faq-q"><h3>How long does a typical website project take?</h3><div class="faq-icon"></div></div>
+          <div class="faq-a"><p>Most standard websites are completed in 3–5 weeks from kickoff, depending on scope. E-commerce and custom builds typically run 5–8 weeks.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><h3>Can I switch packages later?</h3><div class="faq-icon"></div></div>
+          <div class="faq-a"><p>Yes. Packages are designed to scale with you — you can upgrade at any renewal as your marketing needs grow.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><h3>Do you work with businesses outside Pakistan?</h3><div class="faq-icon"></div></div>
+          <div class="faq-a"><p>Absolutely. We work with clients internationally and structure communication, reporting and timelines around your timezone.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><h3>What's included in monthly reporting?</h3><div class="faq-icon"></div></div>
+          <div class="faq-a"><p>You'll receive a clear breakdown of traffic, ad performance, rankings and conversions, along with our recommendations for the next month.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><h3>Is there a minimum contract length?</h3><div class="faq-icon"></div></div>
+          <div class="faq-a"><p>We recommend a 3-month minimum for marketing packages, since SEO and ads need time to compound — but there's no long-term lock-in beyond that.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- CONTACT -->
+  <section class="section-pad" id="contact">
+    <div class="wrap">
+      <div class="contact-shell reveal">
+        <div class="contact-info">
+          <span class="sec-kicker">Get in touch</span>
+          <h2>Ready to Grow Your Business?</h2>
+          <p>Tell us a little about your project and we'll come back to you within one business day with next steps.</p>
+          <div class="contact-points">
+            <div class="contact-point">
+              <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="txt"><div>Email</div><div>devapex25@gmail.com</div></div>
+            </div>
+            <div class="contact-point">
+              <div class="ic"><svg viewBox="0 0 24 24"><path d="M5 4h3l1.5 4-2 1.5a12 12 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2 2C10.5 20 4 13.5 4 6a2 2 0 0 1 1-2z" stroke-linejoin="round"/></svg></div>
+              <div class="txt"><div>Phone</div><div>+92 3115961009</div></div>
+            </div>
+            <div class="contact-point">
+              <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.5 7-11.5A7 7 0 0 0 5 9.5C5 14.5 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.4"/></svg></div>
+              <div class="txt"><div>Office</div><div>Rawalpindi, Punjab, Pakistan</div></div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <form class="lead-form" id="leadForm">
+            <div class="form-row">
+              <div class="field"><label for="f-name">Name</label><input id="f-name" type="text" placeholder="Your full name" required></div>
+              <div class="field"><label for="f-email">Email</label><input id="f-email" type="email" placeholder="you@company.com" required></div>
+            </div>
+            <div class="form-row">
+              <div class="field"><label for="f-phone">Phone</label><input id="f-phone" type="tel" placeholder="+92 3XX XXXXXXX"></div>
+              <div class="field"><label for="f-business">Business Name</label><input id="f-business" type="text" placeholder="Your company"></div>
+            </div>
+            <div class="field">
+              <label for="f-service">Select Service</label>
+              <select id="f-service">
+                <option value="">Choose a service</option>
+                <option>Website Development</option>
+                <option>E-Commerce Development</option>
+                <option>SEO</option>
+                <option>Social Media Marketing</option>
+                <option>Meta &amp; Google Ads</option>
+                <option>Branding &amp; Graphic Design</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+            <div class="field"><label for="f-message">Message</label><textarea id="f-message" placeholder="Tell us a bit about your project and goals"></textarea></div>
+            <button type="submit" class="form-submit">Start Your Project</button>
+            <p class="form-note">We reply within one business day. No spam, ever.</p>
+          </form>
+          <div class="form-success" id="formSuccess">
+            <div class="tick"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3>Message received</h3>
+            <p>Thanks for reaching out — our team will get back to you within one business day.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIG CTA -->
+  <section class="big-cta">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="sec-kicker">Let's talk</span>
+        <h2>Ready to Grow Your Business?</h2>
+        <p>Let's build the website, the campaigns and the brand your business deserves — starting this month.</p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn btn-primary">Start Your Project</a>
+          <a href="#services" class="btn btn-ghost">Explore Services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#top" class="logo"><span class="mark"></span>ApexDev</a>
+        <p>A full-service digital agency helping businesses build, grow and scale through web development, marketing and design.</p>
+        <div class="social-row">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M15 4h-2a4 4 0 0 0-4 4v3H7v3h2v6h3v-6h2.5l.5-3H12V8a1 1 0 0 1 1-1h2z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17" cy="7" r="0.6" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M15 4v9.5a3.5 3.5 0 1 1-3-3.46" stroke-linecap="round"/><path d="M15 4c.4 2.2 2 3.7 4 4" stroke-linecap="round"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><line x1="7.5" y1="10" x2="7.5" y2="16.5"/><circle cx="7.5" cy="7" r="0.6" fill="currentColor"/><path d="M11.5 16.5V10M11.5 12.5c0-1.5 1-2.5 2.3-2.5 1.3 0 2.2 1 2.2 2.5v4" stroke-linecap="round"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="M11 9.5l4 2.5-4 2.5z" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M6.5 17.5L5 20l2.6-1.4A7.5 7.5 0 1 0 6.5 17.5z"/><path d="M9 9.7c0 3 2.6 5.6 5.6 5.6.7 0 1-.8.6-1.3l-.9-1.2a.6.6 0 0 0-.7-.2l-1 .4a4.6 4.6 0 0 1-2.3-2.3l.4-1a.6.6 0 0 0-.2-.7L9.5 8a.7.7 0 0 0-1.2.5c0 .4 0 .8.1 1.2z" fill="currentColor" stroke="none"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#process">Our Process</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Website Development</a></li>
+          <li><a href="#services">E-Commerce Development</a></li>
+          <li><a href="#services">SEO</a></li>
+          <li><a href="#services">Social Media Marketing</a></li>
+          <li><a href="#services">Meta &amp; Google Ads</a></li>
+          <li><a href="#services">Branding &amp; Design</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul class="footer-contact">
+          <li>devapex25@gmail.com</li>
+          <li>+92 3115961009</li>
+          <li>Rawalpindi, Punjab, Pakistan</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 ApexDev. Owner EIZA_EMAN.</p>
+      <p>Built to build, grow and scale.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Nav scroll state
+  var nav = document.getElementById('siteNav');
+  function onScroll(){
+    if(window.scrollY > 30){ nav.classList.add('scrolled'); } else { nav.classList.remove('scrolled'); }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Mobile menu
+  var burger = document.getElementById('burgerBtn');
+  var menu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', function(){ menu.classList.toggle('open'); });
+  menu.querySelectorAll('.m-link').forEach(function(l){
+    l.addEventListener('click', function(){ menu.classList.remove('open'); });
+  });
+
+  // Reveal on scroll
+  var reveals = document.querySelectorAll('.reveal, .process-step');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.classList.add('in', 'in-view');
+        }
+      });
+    }, {threshold:0.15, rootMargin:'0px 0px -40px 0px'});
+    reveals.forEach(function(el){ io.observe(el); });
+  } else {
+    reveals.forEach(function(el){ el.classList.add('in','in-view'); });
+  }
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var q = item.querySelector('.faq-q');
+    var a = item.querySelector('.faq-a');
+    if(item.classList.contains('open')){ a.style.maxHeight = a.scrollHeight + 'px'; }
+    q.addEventListener('click', function(){
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(o){
+        if(o !== item){ o.classList.remove('open'); o.querySelector('.faq-a').style.maxHeight = null; }
+      });
+      if(isOpen){
+        item.classList.remove('open'); a.style.maxHeight = null;
+      } else {
+        item.classList.add('open'); a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // Lead form
+  var form = document.getElementById('leadForm');
+  var success = document.getElementById('formSuccess');
+  if(form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      form.style.display = 'none';
+      success.classList.add('show');
+    });
+  }
+
+  // Particle canvas — glowing particles with light trails
+  var canvas = document.getElementById('particle-canvas');
+  var ctx = canvas.getContext('2d');
+  var hero = document.getElementById('hero');
+  var W, H, particles = [], reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function resize(){
+    W = canvas.width = hero.offsetWidth;
+    H = canvas.height = hero.offsetHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  function initParticles(){
+    var count = W < 640 ? 42 : 80;
+    particles = [];
+    for(var i=0;i<count;i++){
+      particles.push({
+        x: Math.random()*W,
+        y: Math.random()*H,
+        r: Math.random()*1.6 + 0.5,
+        vx: (Math.random()-0.5)*0.18,
+        vy: (Math.random()-0.5)*0.18 - 0.05,
+        a: Math.random()*0.5 + 0.25,
+        pulse: Math.random()*Math.PI*2
+      });
+    }
+  }
+  initParticles();
+  window.addEventListener('resize', initParticles);
+
+  var mouseX = 0, mouseY = 0;
+  hero.addEventListener('mousemove', function(e){
+    var rect = hero.getBoundingClientRect();
+    mouseX = (e.clientX - rect.left - W/2) / W;
+    mouseY = (e.clientY - rect.top - H/2) / H;
+  });
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    var parX = mouseX * 14, parY = mouseY * 14;
+
+    // connecting light trails
+    for(var i=0;i<particles.length;i++){
+      for(var j=i+1;j<particles.length;j++){
+        var p1=particles[i], p2=particles[j];
+        var dx=p1.x-p2.x, dy=p1.y-p2.y;
+        var dist = Math.sqrt(dx*dx+dy*dy);
+        if(dist < 130){
+          ctx.strokeStyle = 'rgba(79,155,255,'+(0.09*(1-dist/130))+')';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(p1.x+parX, p1.y+parY);
+          ctx.lineTo(p2.x+parX, p2.y+parY);
+          ctx.stroke();
+        }
+      }
+    }
+
+    // particles
+    for(var k=0;k<particles.length;k++){
+      var p = particles[k];
+      if(!reduceMotion){
+        p.x += p.vx; p.y += p.vy; p.pulse += 0.02;
+        if(p.x < -10) p.x = W+10; if(p.x > W+10) p.x = -10;
+        if(p.y < -10) p.y = H+10; if(p.y > H+10) p.y = -10;
+      }
+      var glow = p.a + Math.sin(p.pulse)*0.15;
+      var px = p.x + parX, py = p.y + parY;
+      var grad = ctx.createRadialGradient(px,py,0,px,py,p.r*7);
+      grad.addColorStop(0, 'rgba(150,195,255,'+glow+')');
+      grad.addColorStop(1, 'rgba(79,155,255,0)');
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(px,py,p.r*7,0,Math.PI*2);
+      ctx.fill();
+      ctx.fillStyle = 'rgba(230,240,255,'+Math.min(glow+0.3,1)+')';
+      ctx.beginPath();
+      ctx.arc(px,py,p.r,0,Math.PI*2);
+      ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
+</body>
+</html>
